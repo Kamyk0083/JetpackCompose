@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material.icons.Icons
@@ -59,7 +61,7 @@ fun AppScreen(onButtonClick: (String) -> Unit) {
             ProfileSection()
             Divider(color = Color.LightGray, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp))
             ActivitiesSection(activities)
-            Spacer(modifier = Modifier.weight(1f)) // Pushes content above
+            Spacer(modifier = Modifier.weight(1f))
             Divider(color = Color.LightGray, thickness = 1.dp, modifier = Modifier.padding(vertical = 8.dp))
             Button(
                 onClick = { onButtonClick("Well done!") },
@@ -67,7 +69,7 @@ fun AppScreen(onButtonClick: (String) -> Unit) {
                     .fillMaxWidth()
                     .padding(16.dp)
                     .height(48.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)), // Fioletowy
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)),
                 shape = RoundedCornerShape(12.dp)
             ) {
                 Text("Display message", color = Color.White)
@@ -84,15 +86,14 @@ fun ProfileSection() {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        Icon(
-            imageVector = Icons.Filled.Face,
+        Image(
+            painter = painterResource(id = R.drawable.man_person_icon),
             contentDescription = "Profile Icon",
-            modifier = Modifier.size(64.dp),
-            tint = Color.Gray
+            modifier = Modifier.size(64.dp)
         )
         Spacer(modifier = Modifier.width(16.dp))
         Column {
-            Text("Grześ Grzegorzewski", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Text("Ksawery Kamiński", fontWeight = FontWeight.Bold, fontSize = 20.sp)
             Text("Git statistics", color = Color.Gray)
         }
     }
